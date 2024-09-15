@@ -8,24 +8,31 @@
 </head>
 <body>
     <div class="container">
-        <h1>Guess the Cricketer</h1>
-        <div id="player-container" class="player-container">
-            <img id="player-photo" class="player-photo" src="" alt="Cricketer Image">
-            <p id="player-name" class="player-name">Who's this cricketer?</p>
+        <div id="start-section" class="start-section">
+            <img id="default-image" class="default-image-container" src="di.jpeg" alt="Default Image">
+            <p>Press 'Start Game' to begin!</p>
+            <button id="start-game-btn" class="btn">Start Game</button>
         </div>
-        <button id="new-player-btn" class="btn">Next Player</button>
-        <input type="text" id="guess-input" class="input" placeholder="Enter player's name">
-        <button id="submit-guess-btn" class="btn">Submit Guess</button>
-        <p id="feedback" class="feedback"></p>
-        <p id="score" class="score">Score: 0</p>
-    </div>
+        <div id="game-section" style="display: none;">
+            <h1>Guess the Cricketer</h1>
+            <div id="player-container" class="player-container">
+                <img id="player-photo" class="player-photo" src="" alt="Cricketer Image">
+                <p id="player-name" class="player-name">Who's this cricketer?</p>
+            </div>
+            <input type="text" id="guess-input" class="input" placeholder="Enter player's name">
+            <button id="submit-guess-btn" class="btn">Submit Guess</button>
+            <p id="feedback" class="feedback"></p>
+            <p id="score" class="score">Score: 0</p>
+            <button id="new-player-btn" class="btn">Next Player</button>
+        </div>
 
-    <!-- Popup Modal -->
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <h2>Congratulations!</h2>
-            <p id="popup-message">You guessed correctly!</p>
-            <button id="next-player-btn" class="btn">Next Player</button>
+        <!-- Popup Modal -->
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <h2>Congratulations!</h2>
+                <p id="popup-message">You guessed correctly!</p>
+                <button id="next-player-btn" class="btn">Next Player</button>
+            </div>
         </div>
     </div>
 

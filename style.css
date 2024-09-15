@@ -10,53 +10,40 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    box-sizing: border-box;
 }
 
 .container {
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 400px;
+    width: 350px;
     padding: 20px;
     text-align: center;
-    box-sizing: border-box;
 }
 
-/* Responsive Styling */
-@media (max-width: 600px) {
-    .container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .player-photo {
-        width: 200px;
-        height: 200px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    .player-name {
-        font-size: 1.2rem;
-    }
-
-    .btn {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .input {
-        padding: 8px;
-        font-size: 14px;
-    }
+.start-section {
+    text-align: center;
+    padding: 20px;
 }
 
-.player-container {
+.default-image-container {
     margin-bottom: 20px;
+}
+
+.default-image-container img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.default-image-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #333;
+    margin-top: 10px;
 }
 
 .player-photo {
@@ -67,6 +54,7 @@ body {
     border: 5px solid #007bff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    margin: 0 auto; /* Center align image */
 }
 
 .player-photo:hover {
@@ -87,28 +75,19 @@ h1 {
 }
 
 .btn {
-    background: linear-gradient(145deg, #007bff, #0056b3);
+    background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 50px; /* Rounded corners for a modern look */
-    padding: 12px 24px;
+    border-radius: 5px;
+    padding: 12px 25px;
     cursor: pointer;
     font-size: 16px;
     margin: 10px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase; /* Uppercase text for a modern touch */
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background: linear-gradient(145deg, #0056b3, #003d80);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
-}
-
-.btn:active {
-    background: linear-gradient(145deg, #003d80, #0056b3);
-    transform: scale(0.98); /* Slight shrink effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Original shadow on click */
+    background-color: #0056b3;
 }
 
 .input {
@@ -170,22 +149,30 @@ h1 {
 }
 
 .popup .btn {
-    background: linear-gradient(145deg, #007bff, #0056b3);
+    background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 50px; /* Rounded corners */
+    border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase; /* Uppercase text */
 }
 
 .popup .btn:hover {
-    background: linear-gradient(145deg, #0056b3, #003d80);
+    background-color: #0056b3;
+}
+.default-image-container {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin: 0 auto; /* Center align image */
 }
 
-.popup .btn:active {
-    background: linear-gradient(145deg, #003d80, #0056b3);
+.default-image-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }

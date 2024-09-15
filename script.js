@@ -94,6 +94,59 @@ document.getElementById('next-player-btn').addEventListener('click', function() 
 });
 document.getElementById('guess-input').addEventListener('keydown', handleEnterKey); // Add Enter key listener
 
+// Existing JavaScript code...
+
+// Function to handle the start game button
+function startGame() {
+    document.getElementById('start-section').style.display = 'none'; // Hide start section
+    document.getElementById('game-section').style.display = 'block'; // Show game section
+    showRandomPlayer(); // Show the first player
+}
+
+// Add event listener for the start game button
+document.getElementById('start-game-btn').addEventListener('click', startGame);
+
+// Existing event listeners and functions...
+
+// Existing JavaScript code...
+
+// Function to handle the start game button
+function startGame() {
+    document.getElementById('start-section').style.display = 'none'; // Hide start section
+    document.getElementById('game-section').style.display = 'block'; // Show game section
+    showRandomPlayer(); // Show the first player
+}
+
+// Function to display the default image
+function showDefaultImage() {
+    document.getElementById('default-image').style.display = 'block';
+    document.getElementById('player-photo').style.display = 'none';
+}
+
+// Function to hide the default image and show a player image
+function showPlayerImage() {
+    document.getElementById('default-image').style.display = 'none';
+    document.getElementById('player-photo').style.display = 'block';
+}
+
+// Add event listener for the start game button
+document.getElementById('start-game-btn').addEventListener('click', function() {
+    startGame();
+    showPlayerImage(); // Ensure player image is shown when the game starts
+});
+
+// Existing event listeners and functions...
+document.getElementById('start-game-btn').addEventListener('click', function() {
+    document.getElementById('start-section').style.display = 'none';
+    document.getElementById('game-section').style.display = 'block';
+    showRandomPlayer();  // Start the game by showing the first player
+});
+
 // Fetch player data and load score on page load
 fetchPlayers();
 loadScore();
+
+// Show default image when page loads
+showDefaultImage();
+
+
