@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    background: linear-gradient(to right, #0099ff, #66ccff); /* Blue gradient */
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,12 +13,14 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque for glass effect */
     border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Increased shadow for a more pronounced effect */
     width: 350px;
     padding: 20px;
     text-align: center;
+    backdrop-filter: blur(12px); /* Enhanced glass effect */
+    border: 2px solid #0099ff; /* Blue border for added outline */
 }
 
 .start-section {
@@ -35,14 +37,15 @@ body {
     height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #007bff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border: 5px solid #0056b3; /* Darker blue border */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect */
+    transition: transform 0.3s ease;
 }
 
 .default-image-container p {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
-    color: #333;
+    color: #003366; /* Dark blue text */
     margin-top: 10px;
 }
 
@@ -51,52 +54,57 @@ body {
     height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #007bff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    border: 5px solid #0056b3; /* Darker blue border */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin: 0 auto;
 }
 
 .player-photo:hover {
     transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Increased shadow on hover */
 }
 
 h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 2rem;
-    color: #333;
+    color: #0056b3; /* Dark blue text */
     margin-bottom: 20px;
 }
 
 .player-name {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
-    color: #333;
+    color: #003366; /* Dark blue text */
 }
 
 .btn {
-    background-color: #007bff;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Blue gradient button background */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* More rounded corners */
     padding: 12px 25px;
     cursor: pointer;
     font-size: 16px;
     margin: 10px;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+    border: 2px solid #0056b3; /* Darker blue border */
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0056b3, #007bff); /* Reverse gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
 }
 
 .input {
-    padding: 10px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px; /* More rounded corners */
     border: 1px solid #ccc;
-    width: calc(100% - 22px);
+    width: calc(100% - 24px); /* Adjust width to fit container */
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
+    background: rgba(255, 255, 255, 0.9); /* Slight glass effect */
 }
 
 .feedback {
@@ -107,8 +115,36 @@ h1 {
 .score {
     font-size: 20px;
     font-weight: bold;
-    color: #007bff;
+    color: #0056b3; /* Dark blue text */
     margin-top: 20px;
+}
+
+.timer-container {
+    position: relative;
+    margin-top: 30px; /* Adjust spacing as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 8px solid #007bff; /* Blue border */
+    position: absolute;
+    background: rgba(255, 255, 255, 0.9); /* Glass effect */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+    transition: border-color 0.3s ease;
+}
+
+.timer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: #0056b3; /* Dark blue text */
+    margin: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .popup {
@@ -118,26 +154,28 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
 .popup-content {
-    background: white;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9); /* Glass effect */
+    border-radius: 15px;
     padding: 20px;
     text-align: center;
     width: 80%;
     max-width: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+    backdrop-filter: blur(12px); /* Glass effect */
+    border: 2px solid #0056b3; /* Darker blue border */
 }
 
 .popup h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
-    color: #007bff;
+    color: #0056b3; /* Dark blue text */
     margin-bottom: 10px;
 }
 
@@ -149,32 +187,450 @@ h1 {
 }
 
 .popup .btn {
-    background-color: #007bff;
+    background: linear-gradient(to right, #007bff, #0056b3); /* Blue gradient button background */
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* More rounded corners */
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* Enhanced shadow */
+    border: 2px solid #0056b3; /* Darker blue border */
 }
 
 .popup .btn:hover {
-    background-color: #0056b3;
+    background: linear-gradient(to right, #0056b3, #007bff); /* Reverse gradient on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+.btn {
+    background: linear-gradient(145deg, #007bff, #0056b3); /* Diagonal gradient for a modern look */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #0056b3; /* Darker blue border */
 }
 
-.leaderboard-section {
-    margin-top: 30px;
-    text-align: left;
+.btn:hover {
+    background: linear-gradient(145deg, #0056b3, #007bff); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
 }
 
-#leaderboard {
-    list-style-type: none;
-    padding: 0;
+.popup .btn {
+    background: linear-gradient(145deg, #007bff, #0056b3); /* Diagonal gradient for a modern look */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #0056b3; /* Darker blue border */
 }
 
-#leaderboard li {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #333;
+.popup .btn:hover {
+    background: linear-gradient(145deg, #0056b3, #007bff); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
 }
+
+
+.btn {
+    background: linear-gradient(145deg, #28a745, #218838); /* Diagonal green gradient */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #218838; /* Darker green border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #218838, #28a745); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+.popup .btn {
+    background: linear-gradient(145deg, #28a745, #218838); /* Diagonal green gradient */
+    color: white;
+    border: none;
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #218838; /* Darker green border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #218838, #28a745); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+.btn {
+    background: linear-gradient(145deg, #6a1b9a, #ab47bc); /* Deep purple to lavender gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #ab47bc; /* Darker lavender border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #ab47bc, #6a1b9a); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+.popup .btn {
+    background: linear-gradient(145deg, #6a1b9a, #ab47bc); /* Deep purple to lavender gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #ab47bc; /* Darker lavender border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #ab47bc, #6a1b9a); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
+}
+.btn {
+    background: linear-gradient(145deg, #009688, #4db6ac); /* Teal to seafoam green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #4db6ac; /* Darker seafoam green border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #4db6ac, #009688); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+.popup .btn {
+    background: linear-gradient(145deg, #009688, #4db6ac); /* Teal to seafoam green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.3); /* 3D shadow effect */
+    border: 2px solid #4db6ac; /* Darker seafoam green border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #4db6ac, #009688); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(255, 255, 255, 0.4); /* Enhanced shadow on hover */
+}
+.btn {
+    background: linear-gradient(145deg, #5d80cd, #397871); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.popup .btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-weight: 600; /* Bold font weight */
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Popup Button Styling */
+.popup .btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-weight: 600; /* Bold font weight */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+/* Import Lato font */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif; /* Updated font */
+    font-weight: 700; /* Bold font weight */
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Popup Button Styling */
+.popup .btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif; /* Updated font */
+    font-weight: 700; /* Bold font weight */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+/* Import Lato font */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif; /* Updated font */
+    font-weight: 700; /* Bold font weight */
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Popup Button Styling */
+.popup .btn {
+    background: linear-gradient(145deg, #004d40, #00796b); /* Deep forest green to warm olive green gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif; /* Updated font */
+    font-weight: 700; /* Bold font weight */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #00796b; /* Darker olive green border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #00796b, #004d40); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(145deg, #6a1b9a, #ab47bc); /* Vibrant purple to lighter purple gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-weight: 600; /* Semi-bold font weight */
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #ab47bc; /* Lighter purple border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #ab47bc, #6a1b9a); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Popup Button Styling */
+.popup .btn {
+    background: linear-gradient(145deg, #6a1b9a, #ab47bc); /* Vibrant purple to lighter purple gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-weight: 600; /* Semi-bold font weight */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #ab47bc; /* Lighter purple border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #ab47bc, #6a1b9a); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Button Styling */
+.btn {
+    background: linear-gradient(145deg, #00bfae, #1de9b6); /* Teal to light teal gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 12px 25px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-weight: 600; /* Semi-bold font weight */
+    font-size: 16px;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #1de9b6; /* Lighter teal border */
+}
+
+.btn:hover {
+    background: linear-gradient(145deg, #1de9b6, #00bfae); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Popup Button Styling */
+.popup .btn {
+    background: linear-gradient(145deg, #00bfae, #1de9b6); /* Teal to light teal gradient */
+    color: white;
+    border: none;
+    border-radius: 12px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* Updated font */
+    font-weight: 600; /* Semi-bold font weight */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3), -4px -4px 8px rgba(0, 0, 0, 0.2); /* 3D shadow effect */
+    border: 2px solid #1de9b6; /* Lighter teal border */
+}
+
+.popup .btn:hover {
+    background: linear-gradient(145deg, #1de9b6, #00bfae); /* Reversed gradient on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.4), -6px -6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+

@@ -2,7 +2,16 @@ let players = [];
 let currentPlayer = null;
 let score = 0;
 let playerName = ''; // Variable to store the player's name
-let leaderboard = []; // Array to store leaderboard data
+let timerInterval = null; // Variable to store the timer
+
+// Load the score from localStorage
+function loadScore() {
+    const storedScore = localStorage.getItem('score');
+    if (storedScore) {
+        score = parseInt(storedScore, 10);
+        document.getElementById('score').textContent = `Score: ${score}`;
+    }
+}
 
 async function fetchPlayers() {
     try {
@@ -17,11 +26,14 @@ async function fetchPlayers() {
 
 function showRandomPlayer() {
     if (players.length === 0) return;
+    clearInterval(timerInterval); // Clear any existing timer interval
     const randomIndex = Math.floor(Math.random() * players.length);
     currentPlayer = players[randomIndex];
     document.getElementById('player-photo').src = currentPlayer.image;
     document.getElementById('player-name').textContent = "Who's this cricketer?";
     document.getElementById('feedback').textContent = '';
+    document.getElementById('guess-input').value = ''; // Clear input for new guess
+    startTimer(); // Start the timer for 20 seconds
 }
 
 function checkGuess() {
@@ -35,8 +47,9 @@ function checkGuess() {
         document.getElementById('popup-message').textContent = 'You guessed correctly!';
         score++;
         document.getElementById('score').textContent = `Score: ${score}`;
-        updateLeaderboard();
+        localStorage.setItem('score', score); // Save the score to localStorage
         showPopup();
+        stopTimer(); // Stop the timer when the guess is correct
     } else {
         document.getElementById('feedback').textContent = 'Try again!';
     }
@@ -46,88 +59,66 @@ function showPopup() {
     document.getElementById('popup').style.display = 'flex';
 }
 
-function hidePopup() {
+function closePopup() {
     document.getElementById('popup').style.display = 'none';
+    showRandomPlayer();
 }
 
-async function updateLeaderboard() {
-    try {
-        const response = await fetch('/api/leaderboard', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name: playerName, score: score }),
-        });
-        if (!response.ok) throw new Error('Failed to update leaderboard');
-        await fetchLeaderboard(); // Refresh the leaderboard after updating
-    } catch (error) {
-        console.error('Error updating leaderboard:', error);
+function startTimer() {
+    let timeLeft = 20;
+    const timerCircle = document.getElementById('timer-circle');
+    const timerText = document.getElementById('timer');
+
+    // Initial update
+    updateTimer(timeLeft);
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer(timeLeft);
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerText.textContent = 'Time\'s up!';
+            timerCircle.style.borderColor = '#ff0000'; // Change color when time is up
+            showRandomPlayer(); // Automatically move to the next player
+        }
+    }, 1000);
+
+    function updateTimer(time) {
+        timerText.textContent = `Time left: ${time}s`;
+
+        const progress = (time / 20) * 100; // Calculate percentage
+        const borderColor = time > 10 ? '#007bff' : '#ff0000'; // Change color based on time
+        timerCircle.style.borderColor = borderColor;
+
+        timerCircle.style.background = `conic-gradient(${borderColor} ${progress}%, rgba(255, 255, 255, 0.8) ${progress}%)`;
     }
 }
 
-async function fetchLeaderboard() {
-    try {
-        const response = await fetch('/api/leaderboard');
-        if (!response.ok) throw new Error('Failed to fetch leaderboard');
-        leaderboard = await response.json();
-        renderLeaderboard();
-    } catch (error) {
-        console.error('Error fetching leaderboard:', error);
-    }
+function stopTimer() {
+    clearInterval(timerInterval);
 }
 
-function renderLeaderboard() {
-    const leaderboardList = document.getElementById('leaderboard');
-    leaderboardList.innerHTML = '';
-    leaderboard.forEach(entry => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${entry.name}: ${entry.score}`;
-        leaderboardList.appendChild(listItem);
-    });
-}
-
-function showLeaderboard() {
-    document.getElementById('start-section').style.display = 'none';
-    document.getElementById('game-section').style.display = 'none';
-    document.getElementById('leaderboard-section').style.display = 'block';
-    fetchLeaderboard(); // Fetch the latest leaderboard data
-}
-
+// Function to start the game
 function startGame() {
-    document.getElementById('name-input-dialog').style.display = 'none';
     document.getElementById('start-section').style.display = 'none';
     document.getElementById('game-section').style.display = 'block';
     showRandomPlayer();
 }
 
-function restartGame() {
-    score = 0;
-    document.getElementById('score').textContent = 'Score: 0';
-    leaderboard = [];
-    renderLeaderboard();
-    document.getElementById('leaderboard-section').style.display = 'none';
-    document.getElementById('start-section').style.display = 'block';
-    fetchPlayers();
-}
-
-document.getElementById('start-game-btn').addEventListener('click', () => {
-    document.getElementById('name-input-dialog').style.display = 'flex';
-});
-
-document.getElementById('submit-name-btn').addEventListener('click', () => {
-    playerName = document.getElementById('player-name-input').value.trim();
-    if (playerName) {
-        startGame();
+// Event listener for the "Enter" key in the guess input field
+document.getElementById('guess-input').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        checkGuess(); // Call the function to check the guess
     }
 });
 
+// Event listeners for buttons
 document.getElementById('submit-guess-btn').addEventListener('click', checkGuess);
-document.getElementById('next-player-btn').addEventListener('click', () => {
-    hidePopup();
-    showRandomPlayer();
-});
 document.getElementById('new-player-btn').addEventListener('click', showRandomPlayer);
-document.getElementById('show-leaderboard-btn').addEventListener('click', showLeaderboard);
-document.getElementById('restart-game-btn').addEventListener('click', restartGame);
+document.getElementById('next-player-btn').addEventListener('click', closePopup);
+document.getElementById('start-game-btn').addEventListener('click', startGame);
 
-// Initialize game
+// Load players and initial score
 fetchPlayers();
+loadScore();
