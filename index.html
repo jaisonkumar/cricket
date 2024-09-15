@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Start Section -->
         <div id="start-section" class="start-section">
             <div id="default-image" class="default-image-container">
                 <img src="di.jpeg" alt="Default Image">
@@ -15,6 +16,17 @@
             </div>
             <button id="start-game-btn" class="btn">Start Game</button>
         </div>
+
+        <!-- Name Input Dialog -->
+        <div id="name-input-dialog" class="popup">
+            <div class="popup-content">
+                <h2>Enter Your Name</h2>
+                <input type="text" id="player-name-input" class="input" placeholder="Enter your name">
+                <button id="submit-name-btn" class="btn">Submit</button>
+            </div>
+        </div>
+
+        <!-- Game Section -->
         <div id="game-section" style="display: none;">
             <h1>Guess the Cricketer</h1>
             <div id="player-container" class="player-container">
@@ -26,6 +38,7 @@
             <p id="feedback" class="feedback"></p>
             <p id="score" class="score">Score: 0</p>
             <button id="new-player-btn" class="btn">Next Player</button>
+            <button id="show-leaderboard-btn" class="btn">Show Leaderboard</button>
         </div>
 
         <!-- Popup Modal -->
@@ -35,6 +48,13 @@
                 <p id="popup-message">You guessed correctly!</p>
                 <button id="next-player-btn" class="btn">Next Player</button>
             </div>
+        </div>
+
+        <!-- Leaderboard Section -->
+        <div id="leaderboard-section" style="display: none;">
+            <h2>Leaderboard</h2>
+            <ul id="leaderboard"></ul>
+            <button id="restart-game-btn" class="btn">Restart Game</button>
         </div>
     </div>
 
