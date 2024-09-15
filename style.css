@@ -27,6 +27,7 @@ body {
 }
 
 .default-image-container {
+    display: block; /* Ensure default image is visible initially */
     margin-bottom: 20px;
 }
 
@@ -55,6 +56,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
     margin: 0 auto; /* Center align image */
+    display: none; /* Hide initially, shown after starting the game */
 }
 
 .player-photo:hover {
@@ -160,19 +162,4 @@ h1 {
 
 .popup .btn:hover {
     background-color: #0056b3;
-}
-.default-image-container {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #007bff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin: 0 auto; /* Center align image */
-}
-
-.default-image-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
 }

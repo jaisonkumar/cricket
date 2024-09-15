@@ -12,7 +12,8 @@ async function fetchPlayers() {
         // Filter out placeholder images
         players = players.filter(player => !player.image.includes('placeholder'));
 
-        showRandomPlayer();
+        // Load the initial default image
+        showDefaultImage();
     } catch (error) {
         console.error('Error fetching players:', error);
     }
@@ -44,6 +45,9 @@ function checkGuess() {
         document.getElementById('feedback').style.color = 'green';
         updateScore(1);  // Increase score for a correct guess
         showPopup('You guessed correctly!');  // Show popup on correct guess
+
+        // Clear the input box
+        document.getElementById('guess-input').value = '';
     } else {
         document.getElementById('feedback').textContent = 'Sorry, try again!';
         document.getElementById('feedback').style.color = 'red';
@@ -85,32 +89,7 @@ function handleEnterKey(event) {
     }
 }
 
-// Add event listeners
-document.getElementById('new-player-btn').addEventListener('click', showRandomPlayer);
-document.getElementById('submit-guess-btn').addEventListener('click', checkGuess);
-document.getElementById('next-player-btn').addEventListener('click', function() {
-    hidePopup();
-    showRandomPlayer();
-});
-document.getElementById('guess-input').addEventListener('keydown', handleEnterKey); // Add Enter key listener
-
-// Existing JavaScript code...
-
-// Function to handle the start game button
-function startGame() {
-    document.getElementById('start-section').style.display = 'none'; // Hide start section
-    document.getElementById('game-section').style.display = 'block'; // Show game section
-    showRandomPlayer(); // Show the first player
-}
-
-// Add event listener for the start game button
-document.getElementById('start-game-btn').addEventListener('click', startGame);
-
-// Existing event listeners and functions...
-
-// Existing JavaScript code...
-
-// Function to handle the start game button
+// Function to start the game
 function startGame() {
     document.getElementById('start-section').style.display = 'none'; // Hide start section
     document.getElementById('game-section').style.display = 'block'; // Show game section
@@ -129,24 +108,19 @@ function showPlayerImage() {
     document.getElementById('player-photo').style.display = 'block';
 }
 
-// Add event listener for the start game button
+// Add event listeners
 document.getElementById('start-game-btn').addEventListener('click', function() {
     startGame();
     showPlayerImage(); // Ensure player image is shown when the game starts
 });
-
-// Existing event listeners and functions...
-document.getElementById('start-game-btn').addEventListener('click', function() {
-    document.getElementById('start-section').style.display = 'none';
-    document.getElementById('game-section').style.display = 'block';
-    showRandomPlayer();  // Start the game by showing the first player
+document.getElementById('new-player-btn').addEventListener('click', showRandomPlayer);
+document.getElementById('submit-guess-btn').addEventListener('click', checkGuess);
+document.getElementById('next-player-btn').addEventListener('click', function() {
+    hidePopup();
+    showRandomPlayer();
 });
+document.getElementById('guess-input').addEventListener('keydown', handleEnterKey); // Add Enter key listener
 
 // Fetch player data and load score on page load
 fetchPlayers();
 loadScore();
-
-// Show default image when page loads
-showDefaultImage();
-
-
